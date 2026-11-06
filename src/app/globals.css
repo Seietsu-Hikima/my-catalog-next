@@ -1,0 +1,245 @@
+:root {
+  --bg: #faf6ef;
+  --ink: #3a332b;
+  --muted: #6f655a;
+  --line: #e6dfd3;
+  --accent: #8a5a44;
+  --image-bg: #efe9df;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.7;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ヘッダー・フッター */
+.site-header {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-footer {
+  padding: 2.5rem 1.25rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.page-title {
+  margin: 0 0 1rem;
+  padding-top: 1.75rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.message {
+  padding: 3rem 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* カテゴリ絞り込み */
+.category-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.category-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.category-link:hover {
+  background: var(--image-bg);
+}
+
+.category-link[aria-current="page"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* 作品一覧 */
+.work-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-card-image {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--image-bg);
+}
+
+.work-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.work-card:hover .work-card-image img {
+  transform: scale(1.03);
+}
+
+.work-card-name {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+
+.work-card-category {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.image-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* 作品詳細 */
+.back-link-wrap {
+  margin: 0;
+  padding: 0.75rem 0;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.work-detail {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.work-detail-image {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--image-bg);
+}
+
+.work-detail-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.work-detail-name {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.work-detail-description {
+  margin: 1rem 0 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* タブレット・PC */
+@media (min-width: 720px) {
+  .work-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+  }
+
+  .work-detail {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .work-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card-image img {
+    transition: none;
+  }
+}
